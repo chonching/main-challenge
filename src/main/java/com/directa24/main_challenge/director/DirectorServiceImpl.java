@@ -26,7 +26,7 @@ public class DirectorServiceImpl implements DirectorService {
         List<String> directorsList = apiResponse.getData().stream()
                 .sorted(Comparator.comparing(DirectorsMoviesApiResponse.Data::getDirector))
                 .map(DirectorsMoviesApiResponse.Data::getDirector)
-                .filter(director -> directorCount.get(director) >= threshold).toList();
+                .filter(director -> directorCount.get(director) > threshold).toList();
 
         return DirectorResponse.builder().directors(directorsList).build();
     }
