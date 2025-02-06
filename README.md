@@ -24,9 +24,9 @@ or
 2. Send POST request via http://localhost:8080/api/directors?page=1&threshold=2
 
 ## Sample Test Results:
-**Test 1**
+**Test 1** enter valid parameters
 **Request URL:** http://localhost:8080/api/directors?page=2&threshold=2
-**Response Body:** 
+**Response Body:**
 ```
 {
     "directors": [
@@ -37,9 +37,9 @@ or
     ]
 }
 ```
-**Test 2**
+**Test 2** enter valid parameters
 **Request URL:** http://localhost:8080/api/directors?page=1&threshold=2
-**Response Body:** 
+**Response Body:**
 ```
 {
     "directors": [
@@ -49,17 +49,17 @@ or
     ]
 }
 ```
-**Test 3**
+**Test 3:** enter valid parameters
 **Request URL:** http://localhost:8080/api/directors?page=1&threshold=3
-**Response Body:** 
+**Response Body:**
 ```
 {
     "directors": []
 }
 ```
-**Test 4**
+**Test 4:** enter valid parameters
 **Request URL:** http://localhost:8080/api/directors?page=1&threshold=1
-**Response Body:** 
+**Response Body:**
 ```
 {
     "directors": [
@@ -75,8 +75,17 @@ or
     ]
 }
 ```
+**Test 5:** enter invalid page value
+**Request URL:** http://localhost:8080/api/directors?page=a&threshold=1
+**Response Body:**
+```
+{
+    "error": "Method parameter 'page': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: \"a\""
+}
+```
+
 
 ## Additional note:
 1. Added page parameter aside from threshold to make testing a lot easier
-2. Added custom exception handling (@RestControllerAdvice) just to cater the scenerio of having exceptions, though the API might not produce BadRequest and NotFound exception
+2. Added custom exception handling (@RestControllerAdvice, fallback method and errorDecoder) just to cater the scenerio of having different exceptions
 3. Added Junit test
