@@ -37,7 +37,7 @@ public class DirectorServiceTest {
         public void testGetDirectors() throws JsonProcessingException {
             Mockito.when(directorsMoviesFeignClient.getDirectors(1))
                     .thenReturn(getResponse());
-            DirectorResponse response = directorServiceImpl.getDirectors(1, 2);
+            DirectorResponse response = directorServiceImpl.getDirectors(1, 1);
             Assertions.assertNotNull(response);
             Assertions.assertEquals(2, response.getDirectors().size());
         }
